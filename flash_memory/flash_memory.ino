@@ -100,11 +100,11 @@ void setup()
   //initalize buttons
   for (int i = 0; i < 4; i++)
   {
-    pinMode(buttons[i], INPUT);
+    pinMode(buttons[i], INPUT_PULLUP);
   }
 
   //inialitze replay button
-  pinMode(replay_button, INPUT);
+  pinMode(replay_button, INPUT_PULLUP);
 
 
   //initalize level and buzzer IC
@@ -214,7 +214,7 @@ void player_input()
       {
         button_state[i] = reading; //confirmed state
 
-        if (button_state[i] == HIGH) //if high, go to handle function
+        if (button_state[i] == LOW) //if high, go to handle function
         {
           handle_button_press(i);
         }
@@ -335,7 +335,7 @@ void replay_sequence()
       replay_state = reading;
 
       // if clicked, replay sequence
-      if(replay_state == HIGH)
+      if(replay_state == LOW)
       {
         guess_index = 0;
         flash_index = 0;
